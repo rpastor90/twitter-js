@@ -3,7 +3,7 @@ var app = express();
 var port = 3000;
 var swig = require('swig');
 var mime = require('mime');
-var fs = require('fs');	
+var fs = require('fs');
 var people;
 var routes = require('./routes/index');
 // var fs = require('fs');
@@ -37,7 +37,6 @@ app.use(function (req, res, next) {
         'x-sent': true
     }
   };
-  console.log("reqPath: ",req.path);
   res.sendFile(req.path, options, function (err) {
     if (err) {
       console.log(err);
@@ -52,12 +51,3 @@ app.use(function (req, res, next) {
 
 app.use('/', routes);
 
-// app.use(function(req, res, next) {
-//   console.log(req.path)
-//   var mimeType = mime.lookup(req.path)
-//   fs.readFile('./public/' + req.path, function(err, fileBuffer) {
-//     if(err) return next()
-//     res.header('Content-Type', mimeType)
-//     res.send(fileBuffer)
-//   })
-// })
