@@ -1,10 +1,13 @@
 var express = require('express');
 var app = express();
 var port = 3000;
+var swig = require('swig');
+// var fs = require('fs');
 
 app.listen(port, function () {
   console.log("Listening on Port: ", port);
 });
+
 
 app.use(function (req, res, next) {
   console.log(req.method, req.url);
@@ -12,7 +15,12 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.get('/', function (req, res) {
+app.get('/', function (req, res, next) {
   // console.log(res.u);
-  res.send('Hello World!');
+  var renderer = swig.renderFile('./views/index.html', {
+        title: 'An Example',
+        people: ['Shafiq', 'Raf', 'Yustin'],
+    });
+  // next();
+  res.send(renderer);
 });
