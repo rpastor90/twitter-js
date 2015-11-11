@@ -5,8 +5,6 @@ var tweetBank = require('../tweetBank');
 var fs = require('fs');
 var path = require('path');
 
-
-
 router.use(function (req, res, next){
   filePath = path.join(__dirname, "../public", req.path);
   var checkFile = fs.lstat(filePath, function(err, stats){
@@ -17,11 +15,9 @@ router.use(function (req, res, next){
   });
 });
 
-
 router.get('', function (req, res, next) {
   var tweets = tweetBank.list();
   res.render( 'index', { title: 'Twitter.js', tweets: tweets, showForm: true } );
-  // next();
 });
 
 router.get('/users/:name', function (req, res) {
@@ -29,7 +25,6 @@ router.get('/users/:name', function (req, res) {
   var list = tweetBank.find({name: name});
   res.render( 'index', { title: 'Twitter.js - Posts by '+name, tweets: list } );
 });
-
 
 router.post('/submit', function(req, res) {
   var name = req.body.name;
@@ -46,7 +41,6 @@ router.get('/users/:name/tweets/:id', function (req, res) {
   console.log("list: ", list);
   res.render( 'index', { title: 'Twitter.js - Posts by '+name, tweets: list } );
 });
-
 
 module.exports = router;
 
