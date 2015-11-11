@@ -23,31 +23,26 @@ app.listen(port, function () {
   console.log("Listening on Port: ", port);
 });
 
-app.use(function (req, res, next) {
-  //console.log("hit,",req.path);
-  next();
-});
+// app.use(function (req, res, next) {
+//   var options = {
+//     root: __dirname + '/public/',
+//     dotfiles: 'deny',
+//     headers: {
+//         'x-timestamp': Date.now(),
+//         'x-sent': true
+//     }
+//   };
+//   res.sendFile(req.path, options, function (err) {
+//     if (err) {
+//       console.log(err);
+//       next();
+//     }
+//     else {
+//       console.log('Sent:', req.path);
+//     }
+//   });
 
-app.use(function (req, res, next) {
-  var options = {
-    root: __dirname + '/public/',
-    dotfiles: 'deny',
-    headers: {
-        'x-timestamp': Date.now(),
-        'x-sent': true
-    }
-  };
-  res.sendFile(req.path, options, function (err) {
-    if (err) {
-      console.log(err);
-      next();
-    }
-    else {
-      console.log('Sent:', req.path);
-    }
-  });
-
-});
+// });
 
 app.use('/', routes);
 

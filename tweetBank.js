@@ -24,7 +24,7 @@ module.exports = { add: add, list: list, find: find };
     var getFakeName = function() {
       var fakeFirsts = ['Nimit', 'Dave', 'Will', 'Charlotte', 'Jacob','Ethan','Sophia','Emma','Madison'];
       var fakeLasts = ["Alley", 'Stacky', 'Fullstackerson', 'Nerd', 'Ashby', 'Gatsby', 'Hazelnut', 'Cookie', 'Tilde', 'Dash'];
-      return randArrayEl(fakeFirsts) + " " + randArrayEl(fakeLasts);
+      return randArrayEl(fakeFirsts);
     };
 
     var getFakeTweet = function() {
