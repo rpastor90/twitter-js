@@ -1,11 +1,16 @@
 var _ = require('underscore');
 
-var data = [/* adds objects with {name: text} */ {name: 'Shafiq', text: "Fullstack instructors are so sexy!! <3"},
-            {name: 'Raf', text: "Yeah, like totally, Shafiq."}];
+var data = [/* adds objects with {name: text} */ ];
+
+var count = 0;
 
 var add = function (name, text) {
-  data.push({ name: name, text: text });
+  count++;
+  data.push({ name: name, text: text, id : count.toString() });
 };
+
+add('Shafiq', "Fullstack instructors are so sexy!! <3");
+add('Raf',"Yeah, like totally, Shafiq.");
 
 var list = function () {
   return _.clone(data);
